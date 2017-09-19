@@ -31,6 +31,8 @@ public class ChatServerGUI extends JFrame implements ActionListener, ChatServerL
             }
         });
     }
+// master
+
 
     private final ServerCore serverCore=new ServerCore(this);
     private final JButton btnStartListening = new JButton(START_LISTENING);

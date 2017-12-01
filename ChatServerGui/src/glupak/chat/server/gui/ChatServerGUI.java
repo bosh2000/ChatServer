@@ -3,6 +3,7 @@ package glupak.chat.server.gui;
 import javax.swing.*;
 
 import glupak.chat.server.core.ChatServerListener;
+import glupak.chat.server.core.SQLSecurityManager;
 import glupak.chat.server.core.ServerCore;
 import glupak.chat.server.gui.ChatServerConstant;
 
@@ -34,7 +35,7 @@ public class ChatServerGUI extends JFrame implements ActionListener, ChatServerL
 // master
 
 
-    private final ServerCore serverCore=new ServerCore(this);
+    private final ServerCore serverCore=new ServerCore(this, new SQLSecurityManager());
     private final JButton btnStartListening = new JButton(START_LISTENING);
     private final JButton btnStopListening = new JButton(STOP_LISTENING);
     private final JButton btnDropAllClients = new JButton(DROP_ALL_CLIENTS);
@@ -65,7 +66,6 @@ public class ChatServerGUI extends JFrame implements ActionListener, ChatServerL
         if (src == btnStartListening)
         {
             serverCore.startListening(8189);
-            throw new RuntimeException("!!!");
         } else {
             if (src == btnDropAllClients) {
                 serverCore.dropAllClients();

@@ -74,7 +74,6 @@ public class ChatClientGUI extends JFrame implements ActionListener, Thread.Unca
         add(bottonPanel, BorderLayout.SOUTH);
         setVisible(true);
 
-
     }
 
     @Override
@@ -96,7 +95,7 @@ public class ChatClientGUI extends JFrame implements ActionListener, Thread.Unca
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if (e.getSource() == btnSend || e.getSource()==fieldInput) {
+        if (e.getSource() == btnSend || e.getSource() == fieldInput) {
             sendMsg();
         }
         if (e.getSource() == btnDisconnect) {
@@ -105,10 +104,8 @@ public class ChatClientGUI extends JFrame implements ActionListener, Thread.Unca
         if (e.getSource() == btnLogin) {
             onConnect();
         }
-        if (e.getSource()==chkAlwaysOnTop){
-            if (this.isAlwaysOnTop()) {
-                this.setAlwaysOnTop(false);
-            } else this.setAlwaysOnTop(true);
+        if (e.getSource() == chkAlwaysOnTop) {
+            setAlwaysOnTop(chkAlwaysOnTop.isSelected());
         }
     }
 
@@ -123,7 +120,7 @@ public class ChatClientGUI extends JFrame implements ActionListener, Thread.Unca
     }
 
     public void sendMsg() {
-        if (fieldInput.getText().length()!=0) {
+        if (fieldInput.getText().isEmpty()) {
             log.append(fieldInput.getText() + "\n");
             fieldInput.setText("");
             fieldInput.grabFocus();
